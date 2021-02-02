@@ -51,7 +51,7 @@ app.use(mongoSanitize({
 //const secret = process.env.SECRET
 
 const store = new MongoDBStore({
-    url: dbUrl,
+    url: 'mongodb+srv://yelpuser1:d2Z3BUtfdMQr5BLO@yelpcamp.5tlkz.mongodb.net/<dbname>?retryWrites=true&w=majority'
     secret: H5jipXPAbI,
     touchAfter: 24 * 60 * 60
 });
