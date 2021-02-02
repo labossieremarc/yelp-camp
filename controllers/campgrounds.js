@@ -5,7 +5,7 @@ const geoCoder = mbxGeocoding({ accessToken: mapBoxToken });
 const { cloudinary } = require('../cloudinary');
 
 module.exports.index = async (req, res, next) => {
-    const campgrounds = await Campground.find({}).sort({_id:-1});;
+    const campgrounds = await Campground.find({}).sort({_id:-1}).populate('popupText');;
     res.render('campgrounds/index', {campgrounds})
 }
 
