@@ -21,9 +21,9 @@ const reviewRoutes = require('./routes/reviews');
 
 const MongoDBStore = require("connect-mongo")(session);
 
-//const dbUrl = process.env.DB_URL
+const dbUrl = process.env.DB_URL
 
-mongoose.connect('mongodb+srv://yelpuser1:d2Z3BUtfdMQr5BLO@yelpcamp.5tlkz.mongodb.net/<dbname>?retryWrites=true&w=majority', {
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -48,11 +48,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(mongoSanitize({
     replaceWith: '_'
 }))
-//const secret = process.env.SECRET
+const secret = process.env.SECRET
 
 const store = new MongoDBStore({
-    url: 'mongodb+srv://yelpuser1:d2Z3BUtfdMQr5BLO@yelpcamp.5tlkz.mongodb.net/<dbname>?retryWrites=true&w=majority',
-    secret: 'H5jipXPAbI',
+    url: dbUrl,
+    secret,
     touchAfter: 24 * 60 * 60
 });
 
@@ -63,7 +63,7 @@ store.on("error", function (e) {
 const sessionConfig = {
     store,
     name: 'session',
-    secret: 'H5jipXPAbI',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
