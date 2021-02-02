@@ -52,7 +52,7 @@ app.use(mongoSanitize({
 
 const store = new MongoDBStore({
     url: 'mongodb+srv://yelpuser1:d2Z3BUtfdMQr5BLO@yelpcamp.5tlkz.mongodb.net/<dbname>?retryWrites=true&w=majority',
-    secret: H5jipXPAbI,
+    secret: 'H5jipXPAbI',
     touchAfter: 24 * 60 * 60
 });
 
@@ -63,7 +63,7 @@ store.on("error", function (e) {
 const sessionConfig = {
     store,
     name: 'session',
-    secret: H5jipXPAbI,
+    secret: 'H5jipXPAbI',
     resave: false,
     saveUninitialized: true,
     cookie: {
